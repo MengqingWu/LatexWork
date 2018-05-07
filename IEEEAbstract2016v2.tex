@@ -1,0 +1,91 @@
+\input{header.tex}
+
+\begin{document}
+
+\title{\textsc{Lycoris}: A large area beam telescope based on hybrid-less strip silicon sensors}
+\author[*]{Mengqing Wu}
+\author[*]{Uwe Kraemer}
+\author[*]{Marcel Stanitziki}
+\author[**]{Martin Breidenbach}
+\author[**]{Dietrich R. Freytag}
+\author[**]{Benjamin A. Reese}
+\affil[*]{Deutsches Elektronen-Synchrotron DESY, Notkestr. 85, 22607 Hamburg, Germany}
+\affil[**]{Stanford Linear Accelerator Center SLAC, 2575 Sand hill Rd, Menlo Park, CA 94025 USA}
+
+\maketitle
+
+\begin{abstract}
+%\linenumbers
+
+A new Large area x-Y COverage Readout Integrated Strip telescope (\lycoris),
+is being built as an improvement of the DESY test beam infrastructure within the Advanced European Infrastructures for Detectors at Accelerators project (AIDA-2020).
+The \lycoris telescope consists of 6 layers of 10$\times$\SI{10}{\square\centi\metre} strip sensors with a pitch of \SI{25}{\micro\metre};
+it is designed to provide a spatial resolution better than \SI{10}{\micro\metre} along the bending direction,
+will be mounted inside a superconducting solenoid magnet of \SI{1}{\tesla},
+
+to provide a spatial resolution better than
+and a resolution better than \SI{1}{\milli\meter} along the magnetic field.
+The full readout system was tested with a hexagonal pixel sensor in the lab with a Sr90 source,
+and later tested in the DESY test beam with minimum electron energy of \SI{4}{\GeV}.
+
+The telescope is expected to be delivered at the beginning of 2019 with a complete package,
+including its own hardware with a common readout system, a new AIDA2020-type TLU and a reconstruction software for user.
+Therefore, a first user case, LP-TPC, to complete R&D is in schedule in fall 2018. In this talk, the current project status with latest results will be shown.
+
+\end{abstract}
+
+\section*{A large active area beam telescope}
+%\linenumbers
+
+The AHCAL barrel for the ILC is a cylindrical structure with an inner radius of \SI{1.8}{\metre} and outer radius of \SI{2.8}{\metre}.
+Inside the AHCAL, an electromagnetic calorimeter (ECAL) will be placed while the AHCAL will be surrounded by the coil magnet. The circular structure is divided into 16 segments containing 48 layers each. An AHCAL layer consists of an HCAL Base Unit (HBU) of 36$\times$\SI{36}{\square\centi\metre} with 144 scintillating tiles of 3$\times$3$\times$\SI{0.3}{\cubic\centi\metre} connected to SiPMs readout by 4 ASICs. The active layers will be placed between \SI{2}{\centi\metre} thick absorber plates of steel. A complete layer contains 2592 channels which for the complete barrel adds up to 3.9 million of channels. The complete AHCAL including the endcaps will add up to 8 million channels.\\
+
+The ASICs include several features: digitization integrated into the front-end, on-detector zero suppression, channel-wise pre-amplifiers to compensate the spread in SiPM gains and channel-wise voltage bias (DACs) are foreseen to compensate the spread in SiPM operating voltages allowing to operate the detector with a single threshold for all channels on an ASIC. In addition here, the front-end has the capability of measuring timing via a voltage ramp (TDC) at single channel level allowing to study the time development of showers and the identification of late particles in harden shower, mostly thermal neutrons.\\
+
+\begin{figure}[!ht]%
+\centering
+\vspace{-10px}
+\hspace{-100px}
+\parbox{1.2in}{
+\includegraphics[width=2.5\linewidth, trim={1cm 9cm 3cm 5cm}, clip]{pics/hardware1.png}
+}%
+\hspace{150px}
+\begin{minipage}{1.2in}%
+\includegraphics[width=2.2\linewidth]{pics/hardware1.png}
+\end{minipage}%
+\caption{On the left, testbeam setup used at the CERN SPS in Summer 2015. On the right, picture of the AHCAL testbeam prototype used at the CERN SPS in Summer 2015. The front face of the calorimeter is on the right of the picture.}%
+\label{fig:1figs}%
+\end{figure}
+
+A multi-layer prototype (see fig.\ref{fig:1figs}) was commissioned in summer 2014; it is containing up to 15 active layers. The first 2 layers consisted of ECAL Base Units (EBU) of 18$\times$\SI{18}{\square\centi\metre} with 144 scintillating strips of 4.5$\times$0.5$\times$\SI{0.2}{\cubic\centi\metre} equipped with MPPCs of 10k and 1.6k pixels respectively, and the same electronics as the previously described HBUs. The next 8 layers consisted of HBUs with 144 channels, equipped with several different types of scintillator tile designs and SiPMs. The main goal of these first layers is the localisation of the first hard interaction in a hadronic shower. The last 4 layers each consisted of 4 HBUs in a 2 by 2 configuration (72$\times$\SI{72}{\square\centi\metre}) having 576 channels. The first two of them were equipped with Ketek SiPMs (2.3k pixels), and the other two with SenSL SiPMs (1.3k pixels). The layers were arranged in a way to study timing correlations with the two first layers close to each other while the two last layers were further separated from each other.
+
+\begin{figure}[!ht]%
+\centering
+\vspace{-80px}
+\hspace{-80px}
+\parbox{1.2in}{
+\includegraphics[width=2.5\linewidth]{pics/hist1.jpg}
+}%
+\hspace{150px}
+\begin{minipage}{1.2in}%
+\includegraphics[width=1.4\linewidth]{pics/hist1.jpg}
+\end{minipage}%
+\vspace{-80px}
+\caption{Minimum ionising particle energy spectra of a typical channel of the AHCAL prototype after energy calibration. On the right, simplified schematics of the TDC voltage ramp in the SPIROC2b ASIC for both testbeam and ILC mode.}%
+\label{fig:2figs}%
+\end{figure}
+
+Timing development of hadronic shower has already been studied in CALICE using the TungstenTiming TestBeam set-up (T3B)$^{\cite{T3B}}$. The study showed that hadronic showers have a time development that is very sensitive to the absorber material. It is characterised by 3 major contributions: instantaneous energy deposition mostly due to the electromagnetic component in the shower core, and a medium/late contribution mostly due to thermal neutrons traveling through the detector and extending into the halo (from few ns to hundreds of ns). Thus a better separation of nearby showers using timing information to identify late neutrons could improve jet energy resolution in the PFA. In addition to the test of different sensor configurations, the goal of the test beam experiment is to investigate such possibilities with real data.
+
+After the energy calibration of the detector to the MIP scale, a timing calibration of the detector has to be performed (see fig.\ref{fig:2figs}). To convert the TDC value to a time value in ns, a conversion slope has to be calibrated as well as a pedestal. The TDC slope depends on the frequency used to operate the detector, in testbeam, the frequency used is 250 kHz (4 $\mu$s). The expected timing resolution for the AHCAL in testbeam is around 4-5 ns precision. For ILC, the expected resolution is under 1 ns.
+In this contribution, we will describe the timing calibration procedure, and we will present the first results on timing resolution with muon and electron beams obtained in testbeam data and compare them to simulation.
+
+\footnotesize
+\begin{thebibliography}{1}
+
+\bibitem{T3B} The CALICE Collaboration, C. Adloff et al., {\em The time structure of hadronic showers in highly granular calorimeters with tungsten and
+steel absorbers}, \textbf{2014 JINST 9 P07022}.
+
+\end{thebibliography}
+
+\end{document}
