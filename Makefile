@@ -37,3 +37,4 @@ $(FileName).pdf: $(FileName).tex
 
 clean:
 	latexmk -CA
+	rm *.gz

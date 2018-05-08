@@ -24,7 +24,7 @@ running at a timing resolution as multiples of \SI{80}{\nano\second};
 its active area is designed to be 10$\times$\SI{10}{\square\centi\metre}, extendable to 10$\times$\SI{20}{\square\centi\metre}.
 It will be mounted inside a \SI{1}{\tesla} solenoid magnet,
 providing a spatial resolution better than \SI{10}{\micro\metre} along the bending direction,
-and a resolution better than \SI{1}{\milli\meter} along the magnetic field.
+and a resolution better than \SI{1}{\milli\metre} along the magnetic field.
 The full readout system was tested with a hexagonal pixel sensor in the lab with a Sr90 source,
 and later tested in the electron beam at DESY in May and October 2017;
 the first assembled modules were tested in the spring 2018.
@@ -32,7 +32,7 @@ First results of the \lycoris prototype will be presented with a comparison to s
 besides, the characterization of sensor and readout system are also included.
 \end{abstract}
 
-\section*{A large active area beam telescope}
+\section*{Motivation and Concept}
 %\linenumbers
 
 DESY test beam facility provides $e^-/e^+$ beams with energies from 1 to \SI{6}{\GeV} up to \SI{1}{\MHz}
@@ -40,17 +40,13 @@ DESY test beam facility provides $e^-/e^+$ beams with energies from 1 to \SI{6}{
 with three test beam lines (21, 22 and 24).
 The beam lines 21 and 22 are both equiped with a EUDET-type beam telescope~$^{\cite{eudet}}$ with an active area of around 1$\times$\SI{2}{\square\centi\metre},
 which is based on a fine pitch \uppercase{mimosa}~26 monolithic sensor with an event readout frame of \SI{115.2}{\micro\second};
-the beam line 24 is equiped with a \SI{1}{\tesla} solenoid, namely PCMAG, at a diameter of $\sim$\SI{85}{\centi\metre} with its wall of $\sim20X_0$,
+the beam line 24 is equiped with a \SI{1}{\tesla} solenoid, namely PCMAG, at a diametre of $\sim$\SI{85}{\centi\metre} with its wall of $\sim20X_0$,
 inside which both the EUDET-type telescope and the Device Under Test (DUT) can be inserted.
 The EUDET-type beam telescope at DESY is proven to meet user demands very well and thus in a high ($\sim$70\%) demand,
-however, its active area is limited to cover the bending curvature for PCMAG users.
-Therefore, the \lycoris telescope is designed to have a large active area of 10$\times$\SI{10}{\square\centi\metre}, extendable to 10$\times$\SI{20}{\square\centi\metre},
-in order to cover 90\% to 96\% particles with energies from 1 to \SI{6}{\GeV} considering momentum smearing after the magnet wall.
-
-The SiD tracker strip sensor at a pitch of \SI{25}{\micro\metre}, readout by two bumpbonded ASICs, KPiX~$^{\cite{kpix}}$, was chosen to meet the design requirements from simulation studies at DESY,
-KPiX is a 1024 channel readout ASIC, running in a power pulse structure, which needs to be synchronized to the DESY beam structure, as well as to other connected device, such as the Trigger Logic Unit (TLU), and different DUTs.
-The sensors were delivered by Hamamtsu in summer 2017, showing very good electric features and all fully depleting at around \SI{50}{\volt}.
-
+however, its active area is limited for momentum measurements for PCMAG users.
+Therefore, a new telescope is in need to provide a spatial resolution better than \SI{10}{\micro\metre} along the bending direction, and a resolution better than \SI{1}{\milli\metre} along the magnetic field,
+with a large active area of 10$\times$10/\SI{20}{\square\centi\metre},
+to cover 90\% to 96\% particles with energies from 1 to \SI{6}{\GeV} considering momentum smearing after the magnet wall.
 
 \begin{figure}[!ht]%
 \centering
@@ -64,25 +60,38 @@ The sensors were delivered by Hamamtsu in summer 2017, showing very good electri
 \includegraphics[width=2.5\linewidth]{pics/sensor_module1.jpg}
 \end{minipage}%
 \caption{Left: sketch of the \lycoris telescope, where the black lines show the connections of modules;
-Right: photo of one assembled module, that two readout KPiX chips were bumpbonded on the silicon sensor, and connected to a wirebonded kapton cable that is glued on the sensor.}%
+Right: photo of one assembled module with 2 bumpbonded KPiX chips connecting to a kapton cable glued on sensor via wirebonding.}%
 \label{fig:1figs}%
 \end{figure}
 
-The first assembled sensors were under tests with a Sr90 source in the lab at DESY , and several weeks DESY beam tests are planned in fall 2018.
+The 10$\times$\SI{10}{\square\centi\metre} SiD tracker strip sensor at a pitch of \SI{25}{\micro\metre}, readout by 2 1024-channel ASICs, KPiX~$^{\cite{kpix}}$, can provide a resolution of around \SI{7.2}{\micro\metre},
+was hence chosen, and the other requirements can be achieved by a \SI{2}{\degree} tilt.
+The new telescope, \lycoris is finally designed as a 6-plane strip telescope in a mirror symmetric setup, with its upperstream orientation of (0, -\SI{2}{\degree}, \SI{2}{\degree}), see Figure~\ref{fig:1figs} (left), and it is controlled by a data acquisition (DAQ) FPGA board.
+When a beam particle passes a Photomultiplier (PMT), the connected Trigger Logic Unit (TLU) will send a trigger to the telescope and to the DUT for synchronization;
+the telescope data is digitized and readout by the bumpbonded KPiXs, then packed by the DAQ board and sent to the connected PC, the total integration time is .
+A common DAQ software from the beam telescope community, EUDAQ2~$^{\cite{eudaq2}}$, is used, which also helps to synchronize the run control of telescope, TLU, and DUT.
+
+\section*{Assembly and Tests}
+
+The KPiX readout system were characterized before the sensor delivery with some known hexagonal pixel sensors,
+including understanding how to synchronize the KPiX chip data taking cycles to the DESY beam structure, as well as to other devices, like TLU, and various DUTs.
+It was tested first with a Sr90 source in the lab, and then in the DESY test beam with energies from 4 to \SI{6}{\GeV} in May and October 2017~\cite{lycoris1}.
+
+The strip sensors were delivered by Hamamtsu in summer 2017, showing very good electric features and all fully depleted at around \SI{50}{\volt}.
+The first assembled sensors, see one example in Figure~\ref{fig:1figs} (right), were tested in spring 2018, with a Sr90 source in the lab at DESY, and several DESY test beam weeks are in schedule in fall 2018.
+Figure~\ref{fig:2figs} shows the fired strip distribution over one data taking run, demenstrating that the assembled module is capable of seeing signals.
 
 \begin{figure}[!ht]%
 \centering
-\includegraphics[width=0.49\linewidth]{pics/hist1.jpg}
+%\includegraphics[width=0.49\linewidth]{pics/S58_K2_2018_05_07_16_49_42_strip_entries.png}
 \includegraphics[width=0.49\linewidth]{pics/S58_K2_2018_05_07_16_49_42_strip_entries.png}
-\caption{}%
+\caption{The fired strip distribution over one assembled module, from data collected in self-trigger mode under a Sr90 source. }%
 \label{fig:2figs}%
 \end{figure}
 
-Blah more details here.
-
-Plan and target to show.
-
-In this contribution, we will describe the latest \lycoris prototype, and we will present the first results on testing the prototype with comparison to simulation, as well as the sensor and readout system characterization.
+\lycoris telescope is scheduled to be delivered early 2019, with a TLU and a reconstruction software ready-to-use for user.
+In this contribution, the latest \lycoris prototype will be presented, with its first results and a comparison to simulation;
+the characterization of the sensor and readout system will also be included.
 
 \footnotesize
 \begin{thebibliography}{1}
@@ -93,14 +102,14 @@ In this contribution, we will describe the latest \lycoris prototype, and we wil
 \bibitem{kpix} J.~Brau et al., {\em KPiX - A 1,024 channel readout ASIC for the ILC},
 \textbf{in 2012 IEEE Nuclear Science Symposium and Medical Imaging Conference Record (NSS/MIC), pp. 1857–1860, Oct 2012.}.
 
+\bibitem{eudaq2} Y.~Liu., {\em EUDAQ2 User Manual},
+\textbf{AIDA-2020-NOTE-2018-001}.
+
 \bibitem{lycoris1} U.~Kraemer et al., {\em LYCORIS - A Large Area Strip Telescope},
 \textbf{arXiv:1801.08505 [physics.ins-det]}.
 
-%\bibitem{mimosa} J.~Baudot et al., {\em First test results Of MIMOSA-26, a fast CMOS sensor with integrated zero suppression and digitized output},
-%\textbf{2009 IEEE Nuclear Science Symposium Conference Record (NSS/MIC), Orlando, FL, 2009, pp. 1169-1173}.
-
-\bibitem{T3B} The CALICE Collaboration, C. Adloff et al., {\em The time structure of hadronic showers in highly granular calorimeters with tungsten and
-steel absorbers}, \textbf{2014 JINST 9 P07022}.
+%\bibitem{T3B} The CALICE Collaboration, C. Adloff et al., {\em The time structure of hadronic showers in highly granular calorimetres with tungsten and
+%steel absorbers}, \textbf{2014 JINST 9 P07022}.
 
 \end{thebibliography}
 
