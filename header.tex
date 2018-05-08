@@ -9,21 +9,22 @@
 \usepackage{graphicx} % Allows for eps images
 \usepackage{multicol} % Allows for multiple columns
 \usepackage[dvips,letterpaper,margin=0.75in,bottom=0.5in]{geometry}
-\usepackage{authblk}
-\renewcommand\Authands{ and }
+\usepackage{authblk} % Allows for authors from multiiple institutes
+\renewcommand\Authands{ and } % for authblk
+\usepackage{indentfirst} % to have indent for the 1st paragraph of each section
 
  % Sets margins and page size
 \pagestyle{empty} % Removes page numbers
 
 \makeatletter % Need for anything that contains an @ command
 
-\newcommand{\affil}[1]{\def\@affilname{#1}}
+% \newcommand{\affil}[1]{\def\@affilname{#1}}
 \def\@affil{\@affilname}
 
-\renewcommand{\maketitle} % Redefine maketitle to conserve space
-{ \begingroup \vskip 10pt \begin{center} \large {\bf \@title}
-	\vskip 10pt \large \@author \vskip 10pt \large \@affil \end{center}
-  \vskip 10pt \endgroup \setcounter{footnote}{0} }
+% \renewcommand{\maketitle} % Redefine maketitle to conserve space
+% { \begingroup \vskip 10pt \begin{center} \large {\bf \@title}
+% 	\vskip 10pt \large \@author \vskip 10pt \large \@affil \end{center}
+%   \vskip 10pt \endgroup \setcounter{footnote}{0} }
 
 \makeatother % End of region containing @ commands
 \renewcommand{\labelenumi}{(\alph{enumi})} % Use letters for enumerate
@@ -69,9 +70,9 @@
 \usepackage{siunitx}
 \usepackage{lineno}
 
-\def\lycoris{\textsc{Lycoris }}
+\def\lycoris{\textsc{Lycoris }}%
 \def\GeV{\ifmode {\mathrm{\ Ge\kern -0.1em V }}\else
-								 {\textrm{Ge\kern -0.1em V }}\fi}
+								 {\textrm{Ge\kern -0.1em V }}\fi}%
 
 % ***********************************************************
 % ********************** END HEADER *************************
