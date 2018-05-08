@@ -42,10 +42,15 @@ The beam lines 21 and 22 are both equiped with a EUDET-type beam telescope~$^{\c
 which is based on a fine pitch \uppercase{mimosa}~26 monolithic sensor with an event readout frame of \SI{115.2}{\micro\second};
 the beam line 24 is equiped with a \SI{1}{\tesla} solenoid, namely PCMAG, at a diameter of $\sim$\SI{85}{\centi\metre} with its wall of $\sim20X_0$,
 inside which both the EUDET-type telescope and the Device Under Test (DUT) can be inserted.
-The EUDET-type beam telescope at DESY is proven to meet user's demands very well and thus in a high ($\sim$70\%) demand,
+The EUDET-type beam telescope at DESY is proven to meet user demands very well and thus in a high ($\sim$70\%) demand,
 however, its active area is limited to cover the bending curvature for PCMAG users.
 Therefore, the \lycoris telescope is designed to have a large active area of 10$\times$\SI{10}{\square\centi\metre}, extendable to 10$\times$\SI{20}{\square\centi\metre},
-in order to cover 90\% to 96\% particles with energies from 1 to \SI{6}{\GeV}.
+in order to cover 90\% to 96\% particles with energies from 1 to \SI{6}{\GeV} considering momentum smearing after the magnet wall.
+
+The SiD tracker strip sensor at a pitch of \SI{25}{\micro\metre}, readout by two bumpbonded ASICs, KPiX~$^{\cite{kpix}}$, was chosen to meet the design requirements from simulation studies at DESY,
+KPiX is a 1024 channel readout ASIC, running in a power pulse structure, which needs to be synchronized to the DESY beam structure, as well as to other connected device, such as the Trigger Logic Unit (TLU), and different DUTs.
+The sensors were delivered by Hamamtsu in summer 2017, showing very good electric features and all fully depleting at around \SI{50}{\volt}.
+
 
 \begin{figure}[!ht]%
 \centering
@@ -58,10 +63,12 @@ in order to cover 90\% to 96\% particles with energies from 1 to \SI{6}{\GeV}.
 \begin{minipage}{1.2in}%
 \includegraphics[width=2.5\linewidth]{pics/sensor_module1.jpg}
 \end{minipage}%
-\caption{On the left, testbeam setup used at the CERN SPS in Summer 2015. On the right, picture of the AHCAL testbeam prototype used at the CERN SPS in Summer 2015. The front face of the calorimeter is on the right of the picture.}%
+\caption{Left: sketch of the \lycoris telescope, where the black lines show the connections of modules;
+Right: photo of one assembled module, that two readout KPiX chips were bumpbonded on the silicon sensor, and connected to a wirebonded kapton cable that is glued on the sensor.}%
 \label{fig:1figs}%
 \end{figure}
 
+The first assembled sensors were under tests with a Sr90 source in the lab at DESY , and several weeks DESY beam tests are planned in fall 2018.
 
 \begin{figure}[!ht]%
 \centering
@@ -82,6 +89,9 @@ In this contribution, we will describe the latest \lycoris prototype, and we wil
 
 \bibitem{eudet} H.~Jansen et al., {\em Performance of the EUDET-type beam telescopes},
 \textbf{EPJ Tech.\ Instrum.\  {\bf 3}, no. 1, 7 (2016)}.
+
+\bibitem{kpix} J.~Brau et al., {\em KPiX - A 1,024 channel readout ASIC for the ILC},
+\textbf{in 2012 IEEE Nuclear Science Symposium and Medical Imaging Conference Record (NSS/MIC), pp. 1857–1860, Oct 2012.}.
 
 \bibitem{lycoris1} U.~Kraemer et al., {\em LYCORIS - A Large Area Strip Telescope},
 \textbf{arXiv:1801.08505 [physics.ins-det]}.
