@@ -464,7 +464,8 @@ installed in a cassette-like support with 2 local readout electronic support at 
 %was hence chosen, and the other requirements can be achieved by a \SI{2}{\degree} tilt. This sensor was originally developed for the SiD Detector Concept for the ILC~\cite{Behnke:2013lya}.
 \begin{figure}[!t]
 \centering
-\includegraphics[width=2.5in]{pics/sensor_module1.jpg}
+%\includegraphics[width=2.5in]{pics/sensor_module1.jpg}
+\includegraphics[width=2.2in]{pics/sensor_module1.jpg}
 \caption{photo of an assembled module with two bump-bonded KPiX chips.
 A kpaton flex cable is glued on the sensor,
 and communicate with the KPiX through a second metallization layer.}
@@ -489,7 +490,7 @@ The first assembled sensors were produced early spring 2018, then examined first
 
 \begin{figure}[!ht]%
   \centering
-  \includegraphics[width=1.0\linewidth]{pics/All_sensors_CV.pdf}
+  \includegraphics[width=0.9\linewidth]{pics/All_sensors_CV.pdf}
   \caption{C-V curves measured on all the bare sensors delivered from Hamamatsu in summer 2017, indicating all the sensors starts to be fully depleted, at around \SI{50}{\volt}.}%
 \label{fig:2}%
 \end{figure}
@@ -499,60 +500,113 @@ The first assembled sensors were produced early spring 2018, then examined first
 The test setup holding structure is grounded as a Faraday shield to provide a relative clean environment.
 Temperary adapter used instead of the final electronic system, therefore cables are lying around the sensor under test inside the sheild, which is expected to pollute the signal.
 Various data taking mode were tested in the lab, including ADC over Charge response calibration, forced trigger pedestal measurement, self-trigger mode run with background noise and with signal.
+% \begin{figure}[!ht]%
+%   \centering
+%   \includegraphics[width=1.0\linewidth]{pics/lab_1.png}
+%   \caption{ $^90Sr$ radioactive source point at the sensor closely with a collimator, in the lab.}%
+% \label{fig:lab1}%
+% \end{figure}
 \begin{figure}[!ht]%
   \centering
-  \includegraphics[width=1.0\linewidth]{pics/lab_1.png}
-  \caption{ $^90Sr$ radioactive source point at the sensor closely with a collimator, in the lab.}%
+  \includegraphics[width=0.65\linewidth]{pics/lab_2.png}
+  \caption{ Calibration of one channel, showing good ADC response to Charge (fC) change;
+  the black dots from the upper plot shows the five DAC/fC calibration points/steps, and a linea fit was performed shown by the red line;
+  a corresponding residual plot from the data to the fit is shown in the lower pad.}%
 \label{fig:lab1}%
 \end{figure}
 
-A preliminary noise level of ~0.5fC is determined from the forced trigger pedestal measurement, see the blue line distribution in Figure~\ref{}.
-%The external trigger run mode can only be tested efficiently in the test beam because the $^{90}Sr$ is largely decreased after passing through the scintillator or through the sensor.
-Under the self-trigger mode, various run configuration were tested, including threshold scan to chose one threshold with background triggered events largely suppressed.
-$^{90}Sr$ source was used for signal runs, and the sensor is able to locate the signal position, as seen in Figure~\ref{fig:lab2} (right).
+The calibration is done via injecting a known charge to each channel and checking its ADC response,
+see the ADC response to the injected charge (fC) for one readout channel in Fig.~\ref{fig:lab1},
+a slope to convert ADC to fC can be determined from the linear fit performed on this calibration distribution for every channel.
+The calibrated slopes of all the readout channels from one KPiX, based on the measurements in the lab,
+is shown by the blue histogram in Fig.~\ref{fig:labtb} (left).
+One can determine the intrinsic noise level of each channel, by recording random noise with a forced trigger configuration.
+A preliminary average noise level of ~0.5fC is determined from the distribution of RMS of all the channels, see the blue histogram in Fig.~\ref{fig:labtb} (right).
+
 \begin{figure}[!ht]%
   \centering
-  \includegraphics[width=0.4\linewidth]{pics/lab_2.png}%
-  \includegraphics[width=0.6\linewidth]{pics/2018_07_13_16_34_20_strip_map_left.png}
+  \includegraphics[width=1.0\linewidth]{pics/duo_pic.png}
   \caption{
-  left: the upper plot shows fC vs ADC from calibration data and a linear fit (red) is drawn to determine the slope, the corresponding residual plot is shown in the lower pad;
-  right: the x-axis illustrates all the strips on the left side of the sensor, z-axis shows the possibility to register one event per acquisition cycle.
+  Blue curves referes to the lab measurements, while Red refers to the test beam results.
+  Left: Slopes of ADC/fC determined from the calibration run for all the channels;
+  Right: RMS in fC of pedestal measured in forced trigger run from all channels.}%
+\label{fig:labtb}%
+\end{figure}
+
+%the RMS of such measurements, see the blue line distribution in Figure~\ref{fig:lab1}.
+%The external trigger run mode can only be tested efficiently in the test beam because the $^{90}Sr$ is largely decreased after passing through the scintillator or through the sensor.
+The KPiX chip is capable to disable each single channel under the self-trigger mode,
+channels with slopes at $0$, and with pedesal RMS values far from the average value, are disabled.
+Under the self-trigger mode, various run configuration were studied,
+for example, a fine stepped threshold scan was performed, in order to chose the threshold suppressing largely the noise.
+A $^{90}Sr$ source was used as signal, pointing at sensor with a collimator;
+the signal test with the sensor in the lab is only studied under the self-trigger mode.
+With a tight threshold that the noise is largely suppressed, the sensor shows the capability to locate the signal position, see the lit-up strips shown in Figure~\ref{fig:lab2}.
+
+\begin{figure}[!ht]%
+  \centering
+    %\includegraphics[width=0.4\linewidth]{pics/lab_2.png}%
+  \includegraphics[width=1.0\linewidth]{pics/2018_07_13_16_34_20_strip_map_left.png}
+  \caption{
+  Signal response plot of one KPiX, i.e. one half of the sensor, from self-trigger data taken in the lab with tight threshold,
+  that x-axis illustrates the strip number, while z-axis shows how likely this strip can register one event per data taking power cycle.
+  The blacked out strips in the signal region are the bad channels that are mannualy disabled accroding to the calibration and the pedestal behaviour.
   }%
 \label{fig:lab2}%
 \end{figure}
 
 
 \section{Test Beam}
-The DESY-II test beam area T24/1 was used, its infrastructure description see~\cite{desytbf}.
-The beam energy was chosen to be 3GeV in order to get the best beam rate, and a $9\times9 mm^2$ secondary collimator was chosen
-It turns out to be 5kHz trigger rate over the device active time, the beam collimator was chosen to be
-The test setup at the test beam is similar to the one in the lab, but the following differences were applied.
-1) Sensors were held in the final support, a grounded cassette, see photo~\ref{fig:tb2}.
-2) A hexagonal pixel sensor plane was placed beneath the micro-strip sensor as a reference device, which employs the same kpix chip and the same readout system.
-3) Two scintillators installed right after the secondary collimator, before the micro-strip sensor, which were connected to a series of NIM modules to provide a conincidence to the kpix readout system.
+The DESY-II Test Beam Area T24/1 and its infrastructure was used~\cite{desytbf}.
+The beam energy was chosen to be \SI{3}{GeV} to achieve the best beam rate, and a $9\times\SI{9}{mm^2}$ secondary collimator was chosen.
+The trigger rate turns out to be \SI{5}{kHz} during the data taking period of KPiX.
+%the beam collimator was chosen to be
+The test setup at the test beam is similar to the one in the lab, but the following three changes were applied.
+1) Sensors were held in the final cassette support that is grounded for better shielding, see Fig.~\ref{fig:tb2}.
+2) A hexagonal pixel sensor plane was placed behind the micro-strip sensor as a reference device, which employs the same KPiX readout system.
+3) Two scintillators installed right after the secondary collimator, before the micro-strip sensor, which were connected to a series of NIM modules to provide a conincidence to the KPiX readout system.
 
 \begin{figure}[!ht]%
   \centering
   \includegraphics[width=1.0\linewidth]{pics/tb_2.png}
-  \caption{Test beam setup.}%
+  \caption{Experimental setup at the DESY-II Test Beam Area T24/1.}%
 \label{fig:tb2}%
 \end{figure}
 
+All the readout channels were re-calibrated due to the changes in the experimental setup and environment.
+The slopes, see the red histogram in Fig.~\ref{fig:labtb} (left), stay the same as the lab measurement, which is expected.
+The noise level turns to be lowered to $\sim$\SI{0.2}{fC}, see the red histogram in Fig.~\ref{fig:labtb} (right),
+which is expected for a better shielding environment from the grounded cassette.
+
+\subsection*{Preliminary Analyses and Discussions}
+
+The same idea, as the measurement in the lab to check signal response with a tight threshold in self-trigger mode, is also implemented.
+The sensor shows good capability to locate the beam position, and the size, see Fig.~\ref{fig:tb1}.
 \begin{figure}[!ht]%
   \centering
-  \includegraphics[width=0.8\linewidth]{pics/tb_1.png}
-  \caption{Test beam setup.}%
+  \includegraphics[width=0.75\linewidth]{pics/tb_1.png}
+  \caption{Signal response plot of one KPiX, i.e. one half of the sensor, from self-trigger data taken in the Test Beam with tight threshold,
+  that x-axis illustrates the strip number, while z-axis shows how likely this strip can register one event per data taking power cycle.
+  The signal region, indicated by the dashed red line, is \SI{10}{\mili\metre} width, which is compatible with the beam size.
+  The blacked out strips in the signal region are the bad channels that are manually disabled. }%
 \label{fig:tb1}%
 \end{figure}
 
-\subsection{Results and Discussion}
-
-Self-trigger mode, with external trigger time stamps, one can plot the time difference between self-triggers and external triggers, in order to study the time features of an event, see Fig.~\ref{fig:res1}.
-Two clear bump can be seen every minimum trigger time unit (8 times BunchClockCount is the reset time after a trigger), which comes from events retriggered from closing neighbour channels.
-This can be used in the future as a cut to clean such events.
+The self-trigger timing feature of the reference ECal sensor was studied before~\cite{lycoris1},
+while this is the first time to study it on this micro-strip sensor.
+The difference between the self-trigger time stamps and the external trigger time stamps are plotted in Fig.~\ref{fig:res1}.
+A good agreement from the strip sensor to the reference sensor is shown on the peak at $\DeltaT=1$,
+while the two small peaks are found every minimum trigger time unit~\footnote{
+The minimum trigger time unit is the reset time after a trigger, which was set as $8$ times the BunchClockCount. The BunchClockCount is a count based on the clock used for data taking.
+}
+after the peat at $1$, only from the strip sensor.
+These two peaks are believed to be events retriggered from the neighbour channels due to the large current induced during the trigger reset.
+%Self-trigger mode, with external trigger time stamps, one can plot the time difference between self-triggers and external triggers, in order to study the time features of an event, see Fig.~\ref{fig:res1}.
+%Two clear bump can be seen every minimum trigger time unit (8 times BunchClockCount is the reset time after a trigger), which comes from events retriggered from closing neighbour channels.
+%This can be used in the future as a cut to clean such events.
 \begin{figure}[!ht]%
   \centering
-  \includegraphics[width=1.0\linewidth]{pics/Res_pic1.png}
+  \includegraphics[width=0.8\linewidth]{pics/Res_pic1.png}
   \caption{Self-trigger mode}%
 \label{fig:res1}%
 \end{figure}
@@ -563,7 +617,7 @@ The time correlated events very well replicate the tail of the all events ditrib
 
 \begin{figure}[!ht]%
   \centering
-  \includegraphics[width=1.0\linewidth]{pics/Res_pic2.png}
+  \includegraphics[width=0.8\linewidth]{pics/Res_pic2.png}
   \caption{Self-trigger mode}%
 \label{fig:res2}%
 \end{figure}
@@ -572,7 +626,7 @@ This time correlated study was carried out on data with various different thresh
 
 \begin{figure}[!ht]%
   \centering
-  \includegraphics[width=1.0\linewidth]{pics/Res_pic3.png}
+  \includegraphics[width=0.8\linewidth]{pics/Res_pic3.png}
   \caption{Self-trigger mode}%
 \label{fig:res3}%
 \end{figure}
