@@ -437,9 +437,9 @@ The other requirements can be achieved by a \SI{2}{\degree} tilt.
 This sensor was originally developed for the SiD Detector Concept for the ILC~\cite{Behnke:2013lya}.
 
 \lycoris is designed as a 6-plane strip telescope in a mirror symmetric setup, with its upstream orientation of (0, -\SI{2}{\degree}, \SI{2}{\degree}).
-The sensor support is a cassette-like Aluminium box, covered by two Carbon fiber plates, see Fig.~\ref{fig:intro1},
-there are two little boards installed at the bottom of the cassette, for power distribution and data transmmition.
-The signal is sent out from the on-sensor ASIC to the FPGA-based DAQ board, via a kapton flex and the small boards at the bottom of the cassete.
+The sensor support is a cassette-like Aluminium box, see Fig.~\ref{fig:intro1}, covered by two Carbon fiber plates,
+and two little boards installed at the bottom of the cassette, for power distribution and data transmmition.
+The signal is sent out from the on-sensor ASIC to the FPGA-based DAQ board, via a kapton flex and the small board at the bottom of the cassete.
 The DAQ board is capable to receive a coincidence from a connected Trigger Logic Unit (TLU), timestampe it and use it as a external trigger.
 %A common DAQ software from the beam telescope community, EUDAQ2~\cite{eudaq2}, is used,
 %which helps to synchronize the run control of telescope, TLU, and DUT.
@@ -472,9 +472,9 @@ and communicate with the KPiX through a second metallization layer.}
 \label{fig:sensor}
 \end{figure}
 
-The SiD strip sensor is readout by a bump-bonded 1024-channel ASIC, KPiX, through a second metallization layer.
-KPiX digitize the signal with a 13 bit ADC resolution, then send it out through one single data trace rounted on the second metallization layer to a wirebonded kapton cable, see Fig.~\ref{fig:sensor}.
-This hybrid-less organizing eliminates the complex with the tranditional hybrid method, and it is the first time verified / tested on this micro-strip sensor.
+The SiD strip sensor is readout by a bump-bonded 1024-channel ASIC, KPiX~\cite{kpix}, through a second metallization layer.
+KPiX digitizes the signal with a 13 bit ADC resolution, then send out through the second metallization layer to a wirebonded kapton cable, see Fig.~\ref{fig:sensor}.
+This hybrid-less organizing eliminates the complex with the tranditional hybrid method, and its functioning is first-time tested in the \lycoris project.
 
 The KPiX chip runs in a pulse cycle mode with a time resolution based on a \SI{100}{MHz} clock, and it can record up to four events per cycle for each channel.
 The KPiX readout system was characterized before the strip sensor produced with several hexagonal pixel sensors, which were originally designed for the SiD ECAL~\cite{Behnke:2013lya}.
@@ -508,7 +508,7 @@ Various data taking mode were tested in the lab, including ADC over Charge respo
 % \end{figure}
 \begin{figure}[!ht]%
   \centering
-  \includegraphics[width=0.65\linewidth]{pics/lab_2.png}
+  \includegraphics[width=0.6\linewidth]{pics/lab_2.png}
   \caption{ Calibration of one channel, showing good ADC response to Charge (fC) change;
   the black dots from the upper plot shows the five DAC/fC calibration points/steps, and a linea fit was performed shown by the red line;
   a corresponding residual plot from the data to the fit is shown in the lower pad.}%
@@ -587,7 +587,7 @@ The sensor shows good capability to locate the beam position, and the size, see 
   \includegraphics[width=0.75\linewidth]{pics/tb_1.png}
   \caption{Signal response plot of one KPiX, i.e. one half of the sensor, from self-trigger data taken in the Test Beam with tight threshold,
   that x-axis illustrates the strip number, while z-axis shows how likely this strip can register one event per data taking power cycle.
-  The signal region, indicated by the dashed red line, is \SI{10}{\mili\metre} width, which is compatible with the beam size.
+  The signal region, indicated by the dashed red line, is \SI{10}{mm} width, which is compatible with the beam size.
   The blacked out strips in the signal region are the bad channels that are manually disabled. }%
 \label{fig:tb1}%
 \end{figure}
@@ -595,10 +595,8 @@ The sensor shows good capability to locate the beam position, and the size, see 
 The self-trigger timing feature of the reference ECal sensor was studied before~\cite{lycoris1},
 while this is the first time to study it on this micro-strip sensor.
 The difference between the self-trigger time stamps and the external trigger time stamps are plotted in Fig.~\ref{fig:res1}.
-A good agreement from the strip sensor to the reference sensor is shown on the peak at $\DeltaT=1$,
-while the two small peaks are found every minimum trigger time unit~\footnote{
-The minimum trigger time unit is the reset time after a trigger, which was set as $8$ times the BunchClockCount. The BunchClockCount is a count based on the clock used for data taking.
-}
+A good agreement from the strip sensor to the reference sensor is shown on the peak at $\Delta T=1$,
+while the two small peaks are found every minimum trigger time unit~\footnote{The minimum trigger time unit is the reset time after a trigger, that was set as $8$ times the \textit{BunchClockCount}, a count based on the data taking clock.}
 after the peat at $1$, only from the strip sensor.
 These two peaks are believed to be events retriggered from the neighbour channels due to the large current induced during the trigger reset.
 %Self-trigger mode, with external trigger time stamps, one can plot the time difference between self-triggers and external triggers, in order to study the time features of an event, see Fig.~\ref{fig:res1}.
@@ -607,31 +605,46 @@ These two peaks are believed to be events retriggered from the neighbour channel
 \begin{figure}[!ht]%
   \centering
   \includegraphics[width=0.8\linewidth]{pics/Res_pic1.png}
-  \caption{Self-trigger mode}%
+  \caption{Distribution of time difference $\Delta T$ from self-triggered events to the external triggers, in \textit{BunchClockCount} (a count based on the data taking clock); all events from all the channels are plotted. }%
 \label{fig:res1}%
 \end{figure}
 
-Self-trigger mode, with a relative low threshold and external trigger time stamps.
-Events which can be correlated to an external trigger time stamp, is shown in Fig.~\ref{fig:res2}.
-The time correlated events very well replicate the tail of the all events ditribution on ADC, and it can even be fit with a naive Landau fit, see the small plot on Fig.~\ref{fig:res2}.
+The above timing study makes it possible to suppress pedestal noise, as well as the retrigger events, by matching the self-triggered events to the external trigger timestampes, which will later on called \textit{time correlated events}.
+It is demonstrated from the example ADC distirbution recorded from one strip in the beam shown in Fig.~\ref{fig:res2} (upper),
+that the distribution of the time correlated events (red histogram) very well replicate the tail of the distribution of all the self-triggered events (blue histogram);
+moreover, a resonably good Landau fit can be performed on the time correlated distribution.
+This external trigger timestampe matching criterion helps to study the purity of the self-triggered events against various thresholds.
+Fig.~\ref{fig:res2} (lower) shows ADC distribution of a different strip in beam area from data with a tighter threshold;
+all the events can be matched to the external trigger in timing, and a Landau convoluted Gaussian fit can be performed which represents well the data distribution.
+
+%Self-trigger mode, with a relative low threshold and external trigger time stamps.
+%Events which can be correlated to an external trigger time stamp, is shown in Fig.~\ref{fig:res2}.
+%The time correlated events very well replicate the tail of the all events ditribution on ADC, and it can even be fit with a naive Landau fit, see the small plot on Fig.~\ref{fig:res2}.
+%This time correlated study was carried out on data with various different threshold, to purify the self-triggered events, see Fig.~\ref{fig:res3}.
 
 \begin{figure}[!ht]%
   \centering
-  \includegraphics[width=0.8\linewidth]{pics/Res_pic2.png}
-  \caption{Self-trigger mode}%
+  \includegraphics[width=0.8\linewidth]{pics/Res_pic2.png}\\
+  \includegraphics[width=0.8\linewidth]{pics/Res_pic3.png}
+  \caption{
+  ADC distribution of self-triggered events from one strip in the beam area.
+  The upper figure includes a comparison plot from events matched external triggers in time (time correlated events) to all the self-triggered events,
+  and a zoom-in view of the time correlated distribution with a promising Landau fit performed.
+  The lower figure shows a different strip from a dataset with tighter threshold, where the time correlated events overlapped with all the self-triggered events,
+  and a good Landau convoluted Gaussian fit is performed.
+  }%
 \label{fig:res2}%
 \end{figure}
 
-This time correlated study was carried out on data with various different threshold, to purify the self-triggered events, see Fig.~\ref{fig:res3}.
+% \begin{figure}[!ht]%
+%   \centering
+%   \caption{  }%
+% \label{fig:res3}%
+% \end{figure}
 
-\begin{figure}[!ht]%
-  \centering
-  \includegraphics[width=0.8\linewidth]{pics/Res_pic3.png}
-  \caption{Self-trigger mode}%
-\label{fig:res3}%
-\end{figure}
-
-All the results shown here are without pedestal subtraction, due to a known issue of the pedestal shifting due to power cycling.
+All the results shown here are performed without pedestal subtraction, due to a known issue of the pedestal shifting between power cycles.
+Further analyses has been carried out after this presentation,
+to study methods to compensate this shifting for pedestal subtraction.
 
 %%%%%%%----------------------
 
@@ -754,7 +767,6 @@ signal efficiency is also firstly be tested under self-trigger mode with a timin
 
 The authors would like to thank ...
 
-
 This project has received funding from the European Union’s Horizon 2020 Research and Innovation programme under Grant Agreement no. 654168.
 
 
@@ -801,8 +813,8 @@ J.~Brau et al., {\em KPiX - A 1,024 channel readout ASIC for the ILC}, \textbf{i
 \bibitem{Behnke:2013lya}
 T.~Behnke et al.,{\em The International Linear Collider Technical Design Report - Volume 4: Detectors}  \textbf{arXiv:1306.6329 [physics.ins-det]}
 
-\bibitem{eudaq2}
-Y.~Liu., {\em EUDAQ2 User Manual}, \textbf{AIDA-2020-NOTE-2018-001}.
+%\bibitem{eudaq2}
+%Y.~Liu., {\em EUDAQ2 User Manual}, \textbf{AIDA-2020-NOTE-2018-001}.
 
 \bibitem{lycoris1}
 U.~Kraemer et al., {\em LYCORIS - A Large Area Strip Telescope}, \textbf{arXiv:1801.08505 [physics.ins-det]}.
