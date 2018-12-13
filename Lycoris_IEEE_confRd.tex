@@ -470,7 +470,7 @@ The DAQ board is capable to receive a coincidence from a connected Trigger Logic
 %the telescope data is digitized and readout by the bump-bonded KPiXs, then packed by the DAQ board and sent to the connected PC. A common DAQ software from the beam telescope
 %community, EUDAQ2~\cite{eudaq2}, is used, which helps to synchronize the run control of telescope, TLU, and DUT. It also greatly simplifies the integration of user DAQ systems.
 
-\begin{figure}[!t]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=0.8\linewidth]{pics/Explosion.png}
 \caption{CAD drawing of each component of one half of the telescope,
@@ -588,9 +588,11 @@ The beam energy was chosen to be \SI{3}{GeV} to achieve the best beam rate, and 
 The trigger rate turns out to be \SI{5}{kHz} during the data taking period of KPiX.
 %the beam collimator was chosen to be
 The test setup at the test beam is similar to the one in the lab, but the following three changes were applied.
-1) Sensors were held in the final cassette support that is grounded for better shielding, see Fig.~\ref{fig:tb2}.
-2) A hexagonal pixel sensor plane was placed behind the micro-strip sensor as a reference device, which employs the same KPiX readout system.
-3) Two scintillators installed right after the secondary collimator, before the micro-strip sensor, which were connected to a series of NIM modules to provide a conincidence to the KPiX readout system.
+\begin{itemize}
+  \item Sensors were held in the final cassette support that is grounded for better shielding, see Fig.~\ref{fig:tb2}.
+  \item A hexagonal pixel sensor plane was placed behind the micro-strip sensor as a reference device, which employs the same KPiX readout system.
+  \item Two scintillators installed right after the secondary collimator, before the micro-strip sensor, which were connected to a series of NIM modules to provide a conincidence to the KPiX readout system.
+\end{itemize}
 
 \begin{figure}[!ht]%
   \centering
