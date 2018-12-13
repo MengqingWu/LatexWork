@@ -63,6 +63,20 @@
 % customized definitions:
 \def\lycoris{\textsc{Lycoris }}%
 
+% give the footnote horizontal rule
+\makeatletter
+\def\footnoterule{\kern-3\p@
+  \hrule \@width 2in \kern 2.6\p@} % the \hrule is .4pt high
+\makeatother
+
+% to have a no marker footnote
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
 % Some very useful LaTeX packages include:
 % (uncomment the ones you want to load)
 
@@ -413,7 +427,7 @@ besides, the characterization of sensor and readout system are also included.
 
 \section{Introduction}
 % no \IEEEPARstart
-
+\blfootnote{(c) All figures and pictures by the author(s) under a CC BY 4.0 license}
 The DESY II Test Beam Facility\cite{desytbf}
 provides $e^-/e^+$ beams with energies from 1 to \SI{6}{\GeV} up to \SI{1}{\MHz}
 %converted from bremsstrahlung beams from carbon fibre targets in the electron-positron synchrotron DESY II,
@@ -436,11 +450,18 @@ which can provide a resolution of around \SI{7.2}{\micro\metre}, and hence it wa
 The other requirements can be achieved by a \SI{2}{\degree} tilt.
 This sensor was originally developed for the SiD Detector Concept for the ILC~\cite{Behnke:2013lya}.
 
-\lycoris is designed as a 6-plane strip telescope in a mirror symmetric setup, with its upstream orientation of (0, -\SI{2}{\degree}, \SI{2}{\degree}).
-The sensor support is a cassette-like Aluminium box, see Fig.~\ref{fig:intro1}, covered by two Carbon fiber plates,
-and two little boards installed at the bottom of the cassette, for power distribution and data transmmition.
+\lycoris is designed as a 6-plane strip telescope, each of which consists of two sensors side-by-side along the axis of the magnetic field.
+The sensor plane orientation is flexible according to the user demands, however, a default design is organized to cope with a large user device in the PCMAG, as following.
+\begin{itemize}
+  \item The upstream arm and the downstream arm~\footnote{Upstream arm refers to the first three planes that the incident particle passes, hence downstream arm refers to the last three planes.} are organized mirror symmetric.
+  \item The upstream sensors are organized with (0, -\SI{2}{\degree}, \SI{2}{\degree}) stereo angles to achieve the requested spatial resolution with a distance of \SI{15}{cm} between sensors.
+  \item Each half is packed in a cassette-like Aluminium box, see in Fig.~\ref{fig:intro1}, which is covered by two Carbon fiber plates, and with two little boards installed at the bottom of the cassette, for power distribution and data transmmition.
+\end{itemize}
+
+%The sensor support is a cassette-like Aluminium box, see Fig.~\ref{fig:intro1}, covered by two Carbon fiber plates,
+%and two little boards installed at the bottom of the cassette, for power distribution and data transmmition.
 The signal is sent out from the on-sensor ASIC to the FPGA-based DAQ board, via a kapton flex and the small board at the bottom of the cassete.
-The DAQ board is capable to receive a coincidence from a connected Trigger Logic Unit (TLU), timestampe it and use it as a external trigger.
+The DAQ board is capable to receive a coincidence from a connected Trigger Logic Unit (TLU)~\cite{tlu}, timestampe it and use it as a external trigger.
 %A common DAQ software from the beam telescope community, EUDAQ2~\cite{eudaq2}, is used,
 %which helps to synchronize the run control of telescope, TLU, and DUT.
 %It also greatly simplifies the integration of user DAQ systems.
@@ -466,7 +487,7 @@ installed in a cassette-like support with 2 local readout electronic support at 
 \centering
 %\includegraphics[width=2.5in]{pics/sensor_module1.jpg}
 \includegraphics[width=2.2in]{pics/sensor_module1.jpg}
-\caption{photo of an assembled module with two bump-bonded KPiX chips.
+\caption{Photo of an assembled module with two bump-bonded KPiX chips.
 A kpaton flex cable is glued on the sensor,
 and communicate with the KPiX through a second metallization layer.}
 \label{fig:sensor}
@@ -474,11 +495,12 @@ and communicate with the KPiX through a second metallization layer.}
 
 The SiD strip sensor is readout by a bump-bonded 1024-channel ASIC, KPiX~\cite{kpix}, through a second metallization layer.
 KPiX digitizes the signal with a 13 bit ADC resolution, then send out through the second metallization layer to a wirebonded kapton cable, see Fig.~\ref{fig:sensor}.
-This hybrid-less organizing eliminates the complex with the tranditional hybrid method, and its functioning is first-time tested in the \lycoris project.
+This hybrid-less organizing eliminates the need for a complex hybrid design, and its functioning is first-time tested in the \lycoris project.
 
-The KPiX chip runs in a pulse cycle mode with a time resolution based on a \SI{100}{MHz} clock, and it can record up to four events per cycle for each channel.
+The KPiX chip runs in a pulse cycle mode, i.e. the chip will receive a power-on pulse to be active for a certain period of time, then power cycled.
+This cycle, later referred as \textit{acquisition cycle}, is configurable based on a \SI{100}{MHz} clock, and during which each readout channel can store up to four events.
 The KPiX readout system was characterized before the strip sensor produced with several hexagonal pixel sensors, which were originally designed for the SiD ECAL~\cite{Behnke:2013lya}.
-This ECal sensor was later used as a reference device in the testbeam for the strip sensor.
+This ECAL sensor was later used as a reference device in the testbeam for the strip sensor.
 %These tests included understanding how to synchronize the KPiX chip data taking cycles to the DESY beam structure, as well as to other devices, like the TLU, and various DUTs.
 %It was tested first with a $^{90}$Sr source in the lab, and then in the DESY test beam with energies from 4 to \SI{6}{\GeV} in May and October 2017~\cite{lycoris1}.
 
@@ -486,11 +508,11 @@ The strip sensors were delivered by Hamamatsu in summer 2017, showing very good 
 % The first assembled sensors, see one example in Figure~\ref{fig:1figs} (right), were tested in spring 2018, with a $^{90}$Sr source in the lab at DESY, and several DESY test beam weeks are in schedule in fall 2018.
 % Figure~\ref{fig:2figs} (right) shows the fired strip distribution over one data taking run, collected by one KPiX chip in a self-trigger mode from one assembled module, using a $^{90}$Sr source ,
 % demonstrating that the assembled module is capable of seeing signals.
-The first assembled sensors were produced early spring 2018, then examined firstly in the lab, then moved to the DESY-II Testbream Facility for testing in the summer 2018.
+The first assembled sensors were produced early spring 2018, then examined firstly in the lab, then moved to the DESY II Testbream Facility for testing in the summer 2018.
 
 \begin{figure}[!ht]%
   \centering
-  \includegraphics[width=0.9\linewidth]{pics/All_sensors_CV.pdf}
+  \includegraphics[width=1.0\linewidth]{pics/All_sensors_CV.pdf}
   \caption{C-V curves measured on all the bare sensors delivered from Hamamatsu in summer 2017, indicating all the sensors starts to be fully depleted, at around \SI{50}{\volt}.}%
 \label{fig:2}%
 \end{figure}
@@ -509,7 +531,7 @@ Various data taking mode were tested in the lab, including ADC over Charge respo
 \begin{figure}[!ht]%
   \centering
   \includegraphics[width=0.6\linewidth]{pics/lab_2.png}
-  \caption{ Calibration of one channel, showing good ADC response to Charge (fC) change;
+  \caption{Calibration of one channel, showing good ADC response to Charge (fC) change;
   the black dots from the upper plot shows the five DAC/fC calibration points/steps, and a linea fit was performed shown by the red line;
   a corresponding residual plot from the data to the fit is shown in the lower pad.}%
 \label{fig:lab1}%
@@ -549,7 +571,7 @@ With a tight threshold that the noise is largely suppressed, the sensor shows th
   \includegraphics[width=1.0\linewidth]{pics/2018_07_13_16_34_20_strip_map_left.png}
   \caption{
   Signal response plot of one KPiX, i.e. one half of the sensor, from self-trigger data taken in the lab with tight threshold,
-  that x-axis illustrates the strip number, while z-axis shows how likely this strip can register one event per data taking power cycle.
+  that x-axis illustrates the strip number, while z-axis shows how likely this strip can register one event per data taking acq. cycle.
   The blacked out strips in the signal region are the bad channels that are mannualy disabled accroding to the calibration and the pedestal behaviour.
   }%
 \label{fig:lab2}%
@@ -557,7 +579,7 @@ With a tight threshold that the noise is largely suppressed, the sensor shows th
 
 
 \section{Test Beam}
-The DESY-II Test Beam Area T24/1 and its infrastructure was used~\cite{desytbf}.
+The DESY II Test Beam Area T24/1 and its infrastructure was used~\cite{desytbf}.
 The beam energy was chosen to be \SI{3}{GeV} to achieve the best beam rate, and a $9\times\SI{9}{mm^2}$ secondary collimator was chosen.
 The trigger rate turns out to be \SI{5}{kHz} during the data taking period of KPiX.
 %the beam collimator was chosen to be
@@ -569,7 +591,7 @@ The test setup at the test beam is similar to the one in the lab, but the follow
 \begin{figure}[!ht]%
   \centering
   \includegraphics[width=1.0\linewidth]{pics/tb_2.png}
-  \caption{Experimental setup at the DESY-II Test Beam Area T24/1.}%
+  \caption{Experimental setup at the DESY II Test Beam Area T24/1.}%
 \label{fig:tb2}%
 \end{figure}
 
@@ -586,13 +608,13 @@ The sensor shows good capability to locate the beam position, and the size, see 
   \centering
   \includegraphics[width=0.75\linewidth]{pics/tb_1.png}
   \caption{Signal response plot of one KPiX, i.e. one half of the sensor, from self-trigger data taken in the Test Beam with tight threshold,
-  that x-axis illustrates the strip number, while z-axis shows how likely this strip can register one event per data taking power cycle.
+  that x-axis illustrates the strip number, while z-axis shows how likely this strip can register one event per acquisition cycle.
   The signal region, indicated by the dashed red line, is \SI{10}{mm} width, which is compatible with the beam size.
   The blacked out strips in the signal region are the bad channels that are manually disabled. }%
 \label{fig:tb1}%
 \end{figure}
 
-The self-trigger timing feature of the reference ECal sensor was studied before~\cite{lycoris1},
+The self-trigger timing feature of the reference ECAL sensor was studied before~\cite{lycoris1},
 while this is the first time to study it on this micro-strip sensor.
 The difference between the self-trigger time stamps and the external trigger time stamps are plotted in Fig.~\ref{fig:res1}.
 A good agreement from the strip sensor to the reference sensor is shown on the peak at $\Delta T=1$,
@@ -642,7 +664,7 @@ all the events can be matched to the external trigger in timing, and a Landau co
 % \label{fig:res3}%
 % \end{figure}
 
-All the results shown here are performed without pedestal subtraction, due to a known issue of the pedestal shifting between power cycles.
+All the results shown here are performed without pedestal subtraction, due to a known issue of the pedestal shifting between acquisition cycles.
 Further analyses has been carried out after this presentation,
 to study methods to compensate this shifting for pedestal subtraction.
 
@@ -743,6 +765,7 @@ to study methods to compensate this shifting for pedestal subtraction.
 % \fnbelowfloat command of the stfloats package.
 
 
+
 \section{Conclusion}
 % The \lycoris telescope is scheduled to be delivered early 2019, with a TLU and a reconstruction software ready-to-use for user.
 % In this contribution, the \lycoris telescope will be presented, with its first results and a comparison to simulation;
@@ -802,7 +825,11 @@ This project has received funding from the European Union’s Horizon 2020 Resea
 AIDA2020 homepage \url{http://aida2020.web.cern.ch}, accessed on 2018-04-05.
 
 \bibitem{desytbf}
-DESY II Test Beam Facility \url{http://testbeam.desy.de}, accessed on 2018-04-05.
+R. Diener et al., \emph{The DESY II test beam facility},  \textbf{arXiv:1807.09328 [physics.ins-det]}.
+%DESY II Test Beam Facility \url{http://testbeam.desy.de}, accessed on 2018-04-05.
+
+\bibitem{tlu} %http://cds.cern.ch/record/2297522
+D., Cussans, {\em Triger Logic Unit ready}, \textbf{AIDA-2020-D5.2}.
 
 \bibitem{eudet}
 H.~Jansen et al., {\em Performance of the EUDET-type beam telescopes}, \textbf{EPJ Tech.\ Instrum.\  {\bf 3}, no. 1, 7 (2016)}.
