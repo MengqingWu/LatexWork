@@ -369,13 +369,13 @@
 %
 \author{
 \IEEEauthorblockN{
+Mengqing Wu\IEEEauthorrefmark{1},
 Martin Breidenbach\IEEEauthorrefmark{2},
 Dietrich R. Freytag\IEEEauthorrefmark{2},
 Uwe Kraemer\IEEEauthorrefmark{1},
-Benjamin A. Reese\IEEEauthorrefmark{2},
-Sebastiaan Roelofs\IEEEauthorrefmark{1}\IEEEauthorrefmark{3},\\
-Marcel Stanitzki\IEEEauthorrefmark{1} and
-Mengqing Wu\IEEEauthorrefmark{1}
+Benjamin A. Reese\IEEEauthorrefmark{2},\\
+Sebastiaan Roelofs\IEEEauthorrefmark{1}\IEEEauthorrefmark{3} and
+Marcel Stanitzki\IEEEauthorrefmark{1}
 }
 
 \IEEEauthorblockA{\IEEEauthorrefmark{1}Deutsches Elektronen-Synchrotron DESY, Notkestr. 85, 22607 Hamburg, Germany}
@@ -431,11 +431,11 @@ besides, the characterization of sensor and readout system are also included.
 The DESY II Test Beam Facility\cite{desytbf}
 provides $e^-/e^+$ beams with energies from 1 to \SI{6}{\GeV} up to \SI{1}{\MHz}
 %converted from bremsstrahlung beams from carbon fibre targets in the electron-positron synchrotron DESY II,
-with three test beam lines (TB21, TB22 and TB24).
-The beam lines TB21 and TB22 are both equipped with a EUDET-type beam telescope~\cite{eudet}
+with three test beamlines (TB21, TB22 and TB24).
+The beamlines TB21 and TB22 are both equipped with a EUDET-type beam telescope~\cite{eudet}
 with an active area of around $1\times$\SI{2}{\square\centi\metre},
 which is based on a fine pitch \uppercase{mimosa}~26 monolithic sensor with an event readout frame of \SI{115.2}{\micro\second};
-the beam line TB24 is equipped with a \SI{1}{\tesla} solenoid, the PCMAG, at a diametre of $\sim$\SI{85}{\centi\metre} with its wall of $\sim20X_0$,
+the beamline TB24 is equipped with a \SI{1}{\tesla} solenoid, the PCMAG, at a diametre of $\sim$\SI{85}{\centi\metre} with its wall of $\sim20X_0$,
 inside which both the EUDET-type telescope and the Device Under Test (DUT) can be inserted.
 The EUDET-type beam telescopes at DESY are proven to meet user demands very well and thus in a high ($\sim$70\%) demand,
 however, its active area is limited for momentum measurements for users in the PCMAG or for users requiring a larger tracker coverage.
@@ -444,7 +444,7 @@ and a resolution better than \SI{1}{\milli\metre} along the magnetic field,
 with a large active area of $10\times$10/\SI{20}{\square\centi\metre},
 to cover 90\% to 96\% of the incoming particles with energies from 1 to \SI{6}{\GeV} considering momentum smearing after the magnet wall.
 
-The \SI{320}{\micro\metre} thick, \SI{10}{cm} long, \SI{10}{cm} wide SiD micro-strip sensor has a sense/readout pitch of $25/$\SI{50}{\micro\metre},
+The \SI{320}{\micro\metre} thick, \SI{10}{cm} long, \SI{10}{cm} wide SiD microstrip sensor has a sense/readout pitch of $25/$\SI{50}{\micro\metre},
 which can provide a resolution of around \SI{7.2}{\micro\metre}, and hence it was chosen.
 %readout by two 1024-channel ASICs, KPiX~\cite{kpix},
 The other requirements can be achieved by a \SI{2}{\degree} tilt.
@@ -455,13 +455,21 @@ The sensor plane orientation is flexible according to the user demands, however,
 \begin{itemize}
   \item The upstream arm and the downstream arm~\footnote{Upstream arm refers to the first three planes that the incident particle passes, hence downstream arm refers to the last three planes.} are organized mirror symmetric.
   \item The upstream sensors are organized with (0, -\SI{2}{\degree}, \SI{2}{\degree}) stereo angles to achieve the requested spatial resolution with a distance of \SI{15}{cm} between sensors.
-  \item Each half is packed in a cassette-like Aluminium box, see in Fig.~\ref{fig:intro1}, which is covered by two Carbon fiber plates, and with two little boards installed at the bottom of the cassette, for power distribution and data transmmition.
+  \item Each half is packed in a cassette-like Aluminium box, see in Fig.~\ref{fig:intro1}, which is covered by two Carbon fibre plates, and with two little boards installed at the bottom of the cassette, for power distribution and data transmission.
 \end{itemize}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.8\linewidth]{pics/Explosion.png}
+\caption{CAD drawing of each component of one half of the telescope,
+i.e. three layers of two microstrip sensors in parallel,
+installed in a cassette-like support with two local readout electronic support at the endplate.}
+\label{fig:intro1}
+\end{figure}
 
 %The sensor support is a cassette-like Aluminium box, see Fig.~\ref{fig:intro1}, covered by two Carbon fiber plates,
 %and two little boards installed at the bottom of the cassette, for power distribution and data transmmition.
-The signal is sent out from the on-sensor ASIC to the FPGA-based DAQ board, via a kapton flex and the small board at the bottom of the cassete.
-The DAQ board is capable to receive a coincidence from a connected Trigger Logic Unit (TLU)~\cite{tlu}, timestampe it and use it as a external trigger.
+The signal is sent out from the on-sensor ASIC to the FPGA-based DAQ board, via a Kapton flex and the small board at the bottom of the cassette.
+The DAQ board is capable to receive a coincidence from a connected Trigger Logic Unit (TLU)~\cite{tlu}, timestamp it and use it as an external trigger.
 %A common DAQ software from the beam telescope community, EUDAQ2~\cite{eudaq2}, is used,
 %which helps to synchronize the run control of telescope, TLU, and DUT.
 %It also greatly simplifies the integration of user DAQ systems.
@@ -470,16 +478,7 @@ The DAQ board is capable to receive a coincidence from a connected Trigger Logic
 %the telescope data is digitized and readout by the bump-bonded KPiXs, then packed by the DAQ board and sent to the connected PC. A common DAQ software from the beam telescope
 %community, EUDAQ2~\cite{eudaq2}, is used, which helps to synchronize the run control of telescope, TLU, and DUT. It also greatly simplifies the integration of user DAQ systems.
 
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=0.8\linewidth]{pics/Explosion.png}
-\caption{CAD drawing of each component of one half of the telescope,
-i.e. 3 layers of two micro-strip sensors in parallel,
-installed in a cassette-like support with 2 local readout electronic support at the endplate.}
-\label{fig:intro1}
-\end{figure}
-
-\subsection{SiD Hybrid-less Micro-Strip Sensor}
+\subsection{SiD Hybrid-less microstrip Sensor}
 
 %The 10$\times$\SI{10}{\square\centi\metre} SiD tracker strip sensor at a pitch of \SI{25}{\micro\metre}, readout by two 1024-channel ASICs, KPiX~\cite{kpix}, can provide a resolution of around \SI{7.2}{\micro\metre},
 %was hence chosen, and the other requirements can be achieved by a \SI{2}{\degree} tilt. This sensor was originally developed for the SiD Detector Concept for the ILC~\cite{Behnke:2013lya}.
@@ -494,13 +493,13 @@ and communicate with the KPiX through a second metallization layer.}
 \end{figure}
 
 The SiD strip sensor is readout by a bump-bonded 1024-channel ASIC, KPiX~\cite{kpix}, through a second metallization layer.
-KPiX digitizes the signal with a 13 bit ADC resolution, then send out through the second metallization layer to a wirebonded kapton cable, see Fig.~\ref{fig:sensor}.
+The KPiX chip digitizes the signal with a 13 bit ADC resolution, then send out through the second metallization layer to a wirebonded Kapton cable, see Fig.~\ref{fig:sensor}.
 This hybrid-less organizing eliminates the need for a complex hybrid design, and its functioning is first-time tested in the \lycoris project.
 
 The KPiX chip runs in a pulse cycle mode, i.e. the chip will receive a power-on pulse to be active for a certain period of time, then power cycled.
-This cycle, later referred as \textit{acquisition cycle}, is configurable based on a \SI{100}{MHz} clock, and during which each readout channel can store up to four events.
+This cycle, later noted as \textit{acquisition cycle}, is configurable based on a \SI{100}{MHz} clock, and during which each readout channel can store up to four events.
 The KPiX readout system was characterized before the strip sensor produced with several hexagonal pixel sensors, which were originally designed for the SiD ECAL~\cite{Behnke:2013lya}.
-This ECAL sensor was later used as a reference device in the testbeam for the strip sensor.
+This ECAL sensor was later used as a reference device in the test beam for the strip sensor.
 %These tests included understanding how to synchronize the KPiX chip data taking cycles to the DESY beam structure, as well as to other devices, like the TLU, and various DUTs.
 %It was tested first with a $^{90}$Sr source in the lab, and then in the DESY test beam with energies from 4 to \SI{6}{\GeV} in May and October 2017~\cite{lycoris1}.
 
@@ -508,7 +507,7 @@ The strip sensors were delivered by Hamamatsu in summer 2017, showing very good 
 % The first assembled sensors, see one example in Figure~\ref{fig:1figs} (right), were tested in spring 2018, with a $^{90}$Sr source in the lab at DESY, and several DESY test beam weeks are in schedule in fall 2018.
 % Figure~\ref{fig:2figs} (right) shows the fired strip distribution over one data taking run, collected by one KPiX chip in a self-trigger mode from one assembled module, using a $^{90}$Sr source ,
 % demonstrating that the assembled module is capable of seeing signals.
-The first assembled sensors were produced early spring 2018, then examined firstly in the lab, then moved to the DESY II Testbream Facility for testing in the summer 2018.
+The first assembled sensors were produced in early spring 2018, then examined firstly in the lab, then moved to the DESY II Testbream Facility for testing in summer 2018.
 
 \begin{figure}[!ht]%
   \centering
@@ -519,9 +518,9 @@ The first assembled sensors were produced early spring 2018, then examined first
 
 
 \section{Lab Test}
-The test setup holding structure is grounded as a Faraday shield to provide a relative clean environment.
-Temperary adapter used instead of the final electronic system, therefore cables are lying around the sensor under test inside the sheild, which is expected to pollute the signal.
-Various data taking mode were tested in the lab, including ADC over Charge response calibration, forced trigger pedestal measurement, self-trigger mode run with background noise and with signal.
+The test setup holding structure is grounded as a Faraday shield to provide a relatively noise-free environment.
+%Temperary adapter used instead of the final electronic system, therefore cables are lying around the sensor under test inside the sheild, which is expected to pollute the signal.
+Various data taking mode were tested in the lab, including ADC calibration, forced trigger pedestal measurement, self-trigger mode run with background noise and with a signal.
 % \begin{figure}[!ht]%
 %   \centering
 %   \includegraphics[width=1.0\linewidth]{pics/lab_1.png}
@@ -530,11 +529,11 @@ Various data taking mode were tested in the lab, including ADC over Charge respo
 % \end{figure}
 \begin{figure}[!ht]%
   \centering
-%  \includegraphics[width=0.6\linewidth]{pics/lab_2.png}
-\includegraphics[width=0.6\linewidth]{pics/calib_example.pdf}
-\includegraphics[width=0.6\linewidth]{pics/resid_example.pdf}
+  \includegraphics[width=0.95\linewidth]{pics/lab_2.png}
+%\includegraphics[width=0.6\linewidth]{pics/calib_example.pdf}
+%\includegraphics[width=0.6\linewidth]{pics/resid_example.pdf}
   \caption{Calibration of one channel, showing good ADC response to Charge (fC) change;
-  the black dots from the upper plot shows the five DAC/fC calibration points/steps, and a linea fit was performed shown by the red line;
+  the black dots from the upper plot shows the five DAC/fC calibration points/steps, and a linear fit was performed shown by the red line;
   a corresponding residual plot from the data to the fit is shown in the lower pad.}%
 \label{fig:lab1}%
 \end{figure}
@@ -549,11 +548,11 @@ A preliminary average noise level of ~0.5fC is determined from the distribution 
 
 \begin{figure}[!ht]%
   \centering
-%  \includegraphics[width=1.0\linewidth]{pics/duo_pic.png}
-  \includegraphics[width=0.5\linewidth]{pics/Slope_59-1_320ns_NG_BLab07_RTB08.pdf}%
-  \includegraphics[width=0.5\linewidth]{pics/Pedestal_RMS_fC_59-1_320ns_NG_BLab07_RTB08.pdf}
+  \includegraphics[width=1.0\linewidth]{pics/calib_duopic.png}
+%  \includegraphics[width=0.5\linewidth]{pics/Slope_59-1_320ns_NG_BLab07_RTB08.pdf}%
+%  \includegraphics[width=0.5\linewidth]{pics/Pedestal_RMS_fC_59-1_320ns_NG_BLab07_RTB08.pdf}
   \caption{
-  Blue curves referes to the lab measurements, while Red refers to the test beam results.
+  The blue histogram refers to the lab measurements, while the red refers to the test beam results.
   Left: Slopes of ADC/fC determined from the calibration run for all the channels;
   Right: RMS in fC of pedestal measured in forced trigger run from all channels.}%
 \label{fig:labtb}%
@@ -561,13 +560,14 @@ A preliminary average noise level of ~0.5fC is determined from the distribution 
 
 %the RMS of such measurements, see the blue line distribution in Figure~\ref{fig:lab1}.
 %The external trigger run mode can only be tested efficiently in the test beam because the $^{90}Sr$ is largely decreased after passing through the scintillator or through the sensor.
-The KPiX chip is capable to disable each single channel under the self-trigger mode,
-channels with slopes at $0$, and with pedesal RMS values far from the average value, are disabled.
-Under the self-trigger mode, various run configuration were studied,
-for example, a fine stepped threshold scan was performed, in order to chose the threshold suppressing largely the noise.
-A $^{90}Sr$ source was used as signal, pointing at sensor with a collimator;
-the signal test with the sensor in the lab is only studied under the self-trigger mode.
-With a tight threshold that the noise is largely suppressed, the sensor shows the capability to locate the signal position, see the lit-up strips shown in Figure~\ref{fig:lab2}.
+The KPiX chip is capable to disable every single channel under the self-trigger mode.
+Therefore, bad channels, such as channels with slopes at $0$, and with pedestal RMS values far from the average value, are disabled.
+Various run configurations were studied with the self-trigger mode,
+for example, a fine stepped threshold scan was performed, in order to choose a threshold which suppresses largely the noise.
+A $^{90}Sr$ source was used as the signal, pointing at the sensor with a collimator.
+The sensor shows the location of the signal position, see the lit-up strips in Fig.~\ref{fig:lab2},
+using data taken in the self-trigger mode with a tight threshold.
+%With a tight threshold that the noise is largely suppressed, the sensor shows the capability to locate the signal position, see the lit-up strips shown in Figure~\ref{fig:lab2}.
 
 \begin{figure}[!ht]%
   \centering
@@ -575,28 +575,31 @@ With a tight threshold that the noise is largely suppressed, the sensor shows th
   \includegraphics[width=1.0\linewidth]{pics/2018_07_13_16_34_20_strip_map_left.png}
   \caption{
   Signal response plot of one KPiX, i.e. one half of the sensor, from self-trigger data taken in the lab with tight threshold,
-  that x-axis illustrates the strip number, while z-axis shows how likely this strip can register one event per data taking acq. cycle.
-  The blacked out strips in the signal region are the bad channels that are mannualy disabled accroding to the calibration and the pedestal behaviour.
+  that x-axis illustrates the strip number, while z-axis shows how likely this strip can register one event per acquisition cycle.
+  The blacked-out strips in the signal region are the bad channels that are manually disabled according to the calibration and the pedestal behaviour.
   }%
 \label{fig:lab2}%
 \end{figure}
 
+The signal test with the sensor in the lab is only studied under the self-trigger mode,
+because the source energy is not high enough to pass through an external trigger device, i.e. a scintillator.
+One can also install the external trigger behind the sensor, however, it is found from the previous studies that the signal strength is largely decreased after passing one sensor layer.
 
 \section{Test Beam}
-The DESY II Test Beam Area T24/1 and its infrastructure was used~\cite{desytbf}.
+The DESY II Test Beam Area T24/1 and its infrastructure were used~\cite{desytbf}.
 The beam energy was chosen to be \SI{3}{GeV} to achieve the best beam rate, and a $9\times\SI{9}{mm^2}$ secondary collimator was chosen.
 The trigger rate turns out to be \SI{5}{kHz} during the data taking period of KPiX.
 %the beam collimator was chosen to be
 The test setup at the test beam is similar to the one in the lab, but the following three changes were applied.
 \begin{itemize}
-  \item Sensors were held in the final cassette support that is grounded for better shielding, see Fig.~\ref{fig:tb2}.
-  \item A hexagonal pixel sensor plane was placed behind the micro-strip sensor as a reference device, which employs the same KPiX readout system.
-  \item Two scintillators installed right after the secondary collimator, before the micro-strip sensor, which were connected to a series of NIM modules to provide a conincidence to the KPiX readout system.
+  \item Sensors were held in the final cassette support which provides better shielding, see Fig.~\ref{fig:tb2}.
+  \item A hexagonal pixel sensor plane was placed behind the microstrip sensor as a reference device, which employs the same KPiX readout system.
+  \item Two scintillators installed right after the secondary collimator, before the microstrip sensor, which were connected to a series of NIM modules to provide a coincidence to the KPiX readout system.
 \end{itemize}
 
 \begin{figure}[!ht]%
   \centering
-  \includegraphics[width=1.0\linewidth]{pics/tb_2.png}
+  \includegraphics[width=0.9\linewidth]{pics/tb_2.png}
   \caption{Experimental setup at the DESY II Test Beam Area T24/1.}%
 \label{fig:tb2}%
 \end{figure}
@@ -609,19 +612,19 @@ which is expected for a better shielding environment from the grounded cassette.
 \subsection*{Preliminary Analyses and Discussions}
 
 The same idea, as the measurement in the lab to check signal response with a tight threshold in self-trigger mode, is also implemented.
-The sensor shows good capability to locate the beam position, and the size, see Fig.~\ref{fig:tb1}.
+The sensor shows a good capability to locate the beam position, and the size, see Fig.~\ref{fig:tb1}.
 \begin{figure}[!ht]%
   \centering
   \includegraphics[width=0.75\linewidth]{pics/tb_1.png}
   \caption{Signal response plot of one KPiX, i.e. one half of the sensor, from self-trigger data taken in the Test Beam with tight threshold,
   that x-axis illustrates the strip number, while z-axis shows how likely this strip can register one event per acquisition cycle.
   The signal region, indicated by the dashed red line, is \SI{10}{mm} width, which is compatible with the beam size.
-  The blacked out strips in the signal region are the bad channels that are manually disabled. }%
+  The blacked-out strips in the signal region are the bad channels that are manually disabled. }%
 \label{fig:tb1}%
 \end{figure}
 
 The self-trigger timing feature of the reference ECAL sensor was studied before~\cite{lycoris1},
-while this is the first time to study it on this micro-strip sensor.
+while this is the first time to study it on this microstrip sensor.
 The difference between the self-trigger time stamps and the external trigger time stamps are plotted in Fig.~\ref{fig:res1}.
 A good agreement from the strip sensor to the reference sensor is shown on the peak at $\Delta T=1$,
 while the two small peaks are found every minimum trigger time unit~\footnote{The minimum trigger time unit is the reset time after a trigger, that was set as $8$ times the \textit{BunchClockCount}, a count based on the data taking clock.}
@@ -637,11 +640,11 @@ These two peaks are believed to be events retriggered from the neighbour channel
 \label{fig:res1}%
 \end{figure}
 
-The above timing study makes it possible to suppress pedestal noise, as well as the retrigger events, by matching the self-triggered events to the external trigger timestampes, which will later on called \textit{time correlated events}.
-It is demonstrated from the example ADC distirbution recorded from one strip in the beam shown in Fig.~\ref{fig:res2} (upper),
+The above timing study makes it possible to suppress pedestal noise, as well as the retrigger events, by matching the self-triggered events to the external trigger timestamps, which will later on called \textit{time correlated events}.
+It is demonstrated from the example ADC distribution recorded from one strip in the beam shown in Fig.~\ref{fig:res2} (upper),
 that the distribution of the time correlated events (red histogram) very well replicate the tail of the distribution of all the self-triggered events (blue histogram);
-moreover, a resonably good Landau fit can be performed on the time correlated distribution.
-This external trigger timestampe matching criterion helps to study the purity of the self-triggered events against various thresholds.
+moreover, a reasonably good Landau fit can be performed on the time correlated distribution.
+This external trigger timestamp matching criterion helps to study the purity of the self-triggered events against various thresholds.
 Fig.~\ref{fig:res2} (lower) shows ADC distribution of a different strip in beam area from data with a tighter threshold;
 all the events can be matched to the external trigger in timing, and a Landau convoluted Gaussian fit can be performed which represents well the data distribution.
 
@@ -653,12 +656,12 @@ all the events can be matched to the external trigger in timing, and a Landau co
 \begin{figure}[!ht]%
   \centering
   \includegraphics[width=0.8\linewidth]{pics/Res_pic2.png}\\
-  \includegraphics[width=0.8\linewidth]{pics/Res_pic3.png}
+  \includegraphics[width=0.78\linewidth]{pics/Res_pic3_1.png}
   \caption{
   ADC distribution of self-triggered events from one strip in the beam area.
   The upper figure includes a comparison plot from events matched external triggers in time (time correlated events) to all the self-triggered events,
   and a zoom-in view of the time correlated distribution with a promising Landau fit performed.
-  The lower figure shows a different strip from a dataset with tighter threshold, where the time correlated events overlapped with all the self-triggered events,
+  The lower figure shows a different strip from a dataset with a tighter threshold, where the time correlated events overlapped with all the self-triggered events,
   and a good Landau convoluted Gaussian fit is performed.
   }%
 \label{fig:res2}%
@@ -671,8 +674,7 @@ all the events can be matched to the external trigger in timing, and a Landau co
 % \end{figure}
 
 All the results shown here are performed without pedestal subtraction, due to a known issue of the pedestal shifting between acquisition cycles.
-Further analyses has been carried out after this presentation,
-to study methods to compensate this shifting for pedestal subtraction.
+Further analyses have been carried out after this presentation to study methods to compensate this shifting for pedestal subtraction.
 
 %%%%%%%----------------------
 
@@ -777,14 +779,15 @@ to study methods to compensate this shifting for pedestal subtraction.
 % In this contribution, the \lycoris telescope will be presented, with its first results and a comparison to simulation;
 % the characterization of the sensor and readout system will also be included.
 
-This is the first application of the SiD hybrid-less micro-strip sensor, from which the sensor with its featured readout system are characterized systematically.
+This is the first application of the SiD hybrid-less microstrip sensor, from which the sensor with its featured readout system are characterized systematically.
 The very first assembled modules were examined with various run conditions in the lab, and the following features are verified:
-1) 80-85\% readout channels shown good ADC to charge reponse, as well as relatively low noise (0.5 fC);
+1) 80-85\% readout channels shown good ADC to charge response, as well as relatively low noise (0.5 fC);
 2) sensor is able to see signal out of noise under self-trigger mode, and locate the signal position.
 
 The first beam test result not only confirms what has been verified in the lab, but also shows a lower noise (0.2 fC) with the sensor better shielded with the final support structure.
-The external trigger run mode is first studied on this sensor at the test beam, the result is not shown in this contribution but it turns out to give promising signal to background ratio after pedestal subtraction.
-signal efficiency is also firstly be tested under self-trigger mode with a timing conincidence to the external trigger,
+The external trigger run mode is first studied on this sensor at the test beam, %the result is not shown in this contribution but
+and it turns out to give a promising signal to background ratio after pedestal subtraction.
+Signal efficiency is also first be tested under self-trigger mode with a timing coincidence to the external trigger,
 
 
 % conference papers do not normally have an appendix
@@ -793,11 +796,8 @@ signal efficiency is also firstly be tested under self-trigger mode with a timin
 % use section* for acknowledgment
 \section*{Acknowledgment}
 
-
-The authors would like to thank ...
-
+The authors would like to thank Deutsches Elektronen-Synchrotron DESY and Helmholtz Gesellschaft Funding for all the support.
 This project has received funding from the European Union’s Horizon 2020 Research and Innovation programme under Grant Agreement no. 654168.
-
 
 % trigger a \newpage just before the given reference
 % number - used to balance the columns on the last page
