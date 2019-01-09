@@ -437,7 +437,7 @@ with an active area of around $1\times$\SI{2}{\square\centi\metre},
 which is based on a fine pitch \uppercase{mimosa}~26 monolithic sensor with an event readout frame of \SI{115.2}{\micro\second};
 the beamline TB24 is equipped with a \SI{1}{\tesla} solenoid, the PCMAG, at a diametre of $\sim$\SI{85}{\centi\metre} with its wall of $\sim20X_0$,
 inside which both the EUDET-type telescope and the Device Under Test (DUT) can be inserted.
-The EUDET-type beam telescopes at DESY are proven to meet user demands very well and thus in a high ($\sim$70\%) demand,
+The EUDET-type beam telescopes at DESY are proven to meet user demands very well and thus in a high ($\sim$80\%) demand,
 however, its active area is limited for momentum measurements for users in the PCMAG or for users requiring a larger tracker coverage.
 Therefore, a new telescope is in need to provide a spatial resolution better than \SI{10}{\micro\metre} along the bending direction,
 and a resolution better than \SI{1}{\milli\metre} along the magnetic field,
@@ -453,7 +453,7 @@ This sensor was originally developed for the SiD Detector Concept for the ILC~\c
 \lycoris is designed as a 6-plane strip telescope, each of which consists of two sensors side-by-side along the axis of the magnetic field.
 The sensor plane orientation is flexible according to the user demands, however, a default design is organized to cope with a large user device in the PCMAG, as following.
 \begin{itemize}
-  \item The upstream arm and the downstream arm~\footnote{Upstream arm refers to the first three planes that the incident particle passes, hence downstream arm refers to the last three planes.} are organized mirror symmetric.
+  \item The upstream arm and the downstream arm\footnote{Upstream arm refers to the first three planes that the incident particle passes, hence downstream arm refers to the last three planes.} are organized mirror symmetric.
   \item The upstream sensors are organized with (0, -\SI{2}{\degree}, \SI{2}{\degree}) stereo angles to achieve the requested spatial resolution with a distance of \SI{15}{cm} between sensors.
   \item Each half is packed in a cassette-like Aluminium box, see in Fig.~\ref{fig:intro1}, which is covered by two Carbon fibre plates, and with two little boards installed at the bottom of the cassette, for power distribution and data transmission.
 \end{itemize}
@@ -544,7 +544,7 @@ a slope to convert ADC to fC can be determined from the linear fit performed on 
 The calibrated slopes of all the readout channels from one KPiX, based on the measurements in the lab,
 is shown by the blue histogram in Fig.~\ref{fig:labtb} (left).
 One can determine the intrinsic noise level of each channel, by recording random noise with a forced trigger configuration.
-A preliminary average noise level of ~0.5fC is determined from the distribution of RMS of all the channels, see the blue histogram in Fig.~\ref{fig:labtb} (right).
+A preliminary average noise level of $\sim$\SI{0.5}{fC} is determined from the distribution of RMS of all the channels, see the blue histogram in Fig.~\ref{fig:labtb} (right).
 
 \begin{figure}[!ht]%
   \centering
@@ -627,7 +627,7 @@ The self-trigger timing feature of the reference ECAL sensor was studied before~
 while this is the first time to study it on this microstrip sensor.
 The difference between the self-trigger time stamps and the external trigger time stamps are plotted in Fig.~\ref{fig:res1}.
 A good agreement from the strip sensor to the reference sensor is shown on the peak at $\Delta T=1$,
-while the two small peaks are found every minimum trigger time unit~\footnote{The minimum trigger time unit is the reset time after a trigger, that was set as $8$ times the \textit{BunchClockCount}, a count based on the data taking clock.}
+while the two small peaks are found every minimum trigger time unit\footnote{The minimum trigger time unit is the reset time after a trigger, that was set as $8$ times the \textit{BunchClockCount}, a count based on the data taking clock.}
 after the peat at $1$, only from the strip sensor.
 These two peaks are believed to be events retriggered from the neighbour channels due to the large current induced during the trigger reset.
 %Self-trigger mode, with external trigger time stamps, one can plot the time difference between self-triggers and external triggers, in order to study the time features of an event, see Fig.~\ref{fig:res1}.
@@ -781,10 +781,10 @@ Further analyses have been carried out after this presentation to study methods 
 
 This is the first application of the SiD hybrid-less microstrip sensor, from which the sensor with its featured readout system are characterized systematically.
 The very first assembled modules were examined with various run conditions in the lab, and the following features are verified:
-1) 80-85\% readout channels shown good ADC to charge response, as well as relatively low noise (0.5 fC);
+1) 80-85\% readout channels shown good ADC to charge response, as well as relatively low noise ($\sim$\SI{0.5}{fC});
 2) sensor is able to see signal out of noise under self-trigger mode, and locate the signal position.
 
-The first beam test result not only confirms what has been verified in the lab, but also shows a lower noise (0.2 fC) with the sensor better shielded with the final support structure.
+The first beam test result not only confirms what has been verified in the lab, but also shows a lower noise ($\sim$\SI{0.2}{fC}) with the sensor better shielded with the final support structure.
 The external trigger run mode is first studied on this sensor at the test beam, %the result is not shown in this contribution but
 and it turns out to give a promising signal to background ratio after pedestal subtraction.
 Signal efficiency is also first be tested under self-trigger mode with a timing coincidence to the external trigger,
